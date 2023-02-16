@@ -29,36 +29,36 @@
         private void InitializeComponent()
         {
             this.objectSelectionGroupBox = new System.Windows.Forms.GroupBox();
-            this.sizeAndLocationGroupBox = new System.Windows.Forms.GroupBox();
-            this.nameAndTextGroupBox = new System.Windows.Forms.GroupBox();
-            this.colorGroupBox = new System.Windows.Forms.GroupBox();
-            this.controlGroupBox = new System.Windows.Forms.GroupBox();
-            this.saveLoadGroupBox = new System.Windows.Forms.GroupBox();
-            this.controlSelectionComboBox = new System.Windows.Forms.ComboBox();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.loadButton = new System.Windows.Forms.Button();
-            this.removeButton = new System.Windows.Forms.Button();
-            this.radioControlRadioButton = new System.Windows.Forms.RadioButton();
-            this.checkControlRadioButton = new System.Windows.Forms.RadioButton();
-            this.textBoxControlRadioButton = new System.Windows.Forms.RadioButton();
             this.buttonControlRadioButton = new System.Windows.Forms.RadioButton();
-            this.xTextBox = new System.Windows.Forms.TextBox();
-            this.yTextBox = new System.Windows.Forms.TextBox();
+            this.textBoxControlRadioButton = new System.Windows.Forms.RadioButton();
+            this.checkControlRadioButton = new System.Windows.Forms.RadioButton();
+            this.radioControlRadioButton = new System.Windows.Forms.RadioButton();
+            this.sizeAndLocationGroupBox = new System.Windows.Forms.GroupBox();
+            this.sizeLabel = new System.Windows.Forms.Label();
+            this.locationLabel = new System.Windows.Forms.Label();
             this.hTextBox = new System.Windows.Forms.TextBox();
             this.wTextBox = new System.Windows.Forms.TextBox();
-            this.locationLabel = new System.Windows.Forms.Label();
-            this.sizeLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.nameLabel = new System.Windows.Forms.Label();
+            this.yTextBox = new System.Windows.Forms.TextBox();
+            this.xTextBox = new System.Windows.Forms.TextBox();
+            this.nameAndTextGroupBox = new System.Windows.Forms.GroupBox();
             this.textLabel = new System.Windows.Forms.Label();
-            this.bgColorButton = new System.Windows.Forms.Button();
-            this.bgColorGroupBox = new System.Windows.Forms.GroupBox();
-            this.fgColorButton = new System.Windows.Forms.Button();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.textTextBox = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.colorGroupBox = new System.Windows.Forms.GroupBox();
             this.fcGroupBox = new System.Windows.Forms.GroupBox();
-            this.createButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
+            this.fgColorButton = new System.Windows.Forms.Button();
+            this.bgColorGroupBox = new System.Windows.Forms.GroupBox();
+            this.bgColorButton = new System.Windows.Forms.Button();
+            this.controlGroupBox = new System.Windows.Forms.GroupBox();
             this.exitButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.createButton = new System.Windows.Forms.Button();
+            this.saveLoadGroupBox = new System.Windows.Forms.GroupBox();
+            this.removeButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.controlSelectionComboBox = new System.Windows.Forms.ComboBox();
             this.objectSelectionGroupBox.SuspendLayout();
             this.sizeAndLocationGroupBox.SuspendLayout();
             this.nameAndTextGroupBox.SuspendLayout();
@@ -80,6 +80,50 @@
             this.objectSelectionGroupBox.TabStop = false;
             this.objectSelectionGroupBox.Text = "Select Object";
             // 
+            // buttonControlRadioButton
+            // 
+            this.buttonControlRadioButton.AutoSize = true;
+            this.buttonControlRadioButton.Location = new System.Drawing.Point(206, 70);
+            this.buttonControlRadioButton.Name = "buttonControlRadioButton";
+            this.buttonControlRadioButton.Size = new System.Drawing.Size(56, 17);
+            this.buttonControlRadioButton.TabIndex = 3;
+            this.buttonControlRadioButton.TabStop = true;
+            this.buttonControlRadioButton.Text = "Button";
+            this.buttonControlRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // textBoxControlRadioButton
+            // 
+            this.textBoxControlRadioButton.AutoSize = true;
+            this.textBoxControlRadioButton.Location = new System.Drawing.Point(206, 30);
+            this.textBoxControlRadioButton.Name = "textBoxControlRadioButton";
+            this.textBoxControlRadioButton.Size = new System.Drawing.Size(64, 17);
+            this.textBoxControlRadioButton.TabIndex = 2;
+            this.textBoxControlRadioButton.TabStop = true;
+            this.textBoxControlRadioButton.Text = "TextBox";
+            this.textBoxControlRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // checkControlRadioButton
+            // 
+            this.checkControlRadioButton.AutoSize = true;
+            this.checkControlRadioButton.Location = new System.Drawing.Point(57, 70);
+            this.checkControlRadioButton.Name = "checkControlRadioButton";
+            this.checkControlRadioButton.Size = new System.Drawing.Size(77, 17);
+            this.checkControlRadioButton.TabIndex = 1;
+            this.checkControlRadioButton.TabStop = true;
+            this.checkControlRadioButton.Text = "Check Box";
+            this.checkControlRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // radioControlRadioButton
+            // 
+            this.radioControlRadioButton.AutoSize = true;
+            this.radioControlRadioButton.Location = new System.Drawing.Point(57, 30);
+            this.radioControlRadioButton.Name = "radioControlRadioButton";
+            this.radioControlRadioButton.Size = new System.Drawing.Size(87, 17);
+            this.radioControlRadioButton.TabIndex = 0;
+            this.radioControlRadioButton.TabStop = true;
+            this.radioControlRadioButton.Text = "Radio Button";
+            this.radioControlRadioButton.UseVisualStyleBackColor = true;
+            // 
             // sizeAndLocationGroupBox
             // 
             this.sizeAndLocationGroupBox.Controls.Add(this.sizeLabel);
@@ -95,153 +139,23 @@
             this.sizeAndLocationGroupBox.TabStop = false;
             this.sizeAndLocationGroupBox.Text = "State size and location";
             // 
-            // nameAndTextGroupBox
+            // sizeLabel
             // 
-            this.nameAndTextGroupBox.Controls.Add(this.textLabel);
-            this.nameAndTextGroupBox.Controls.Add(this.nameLabel);
-            this.nameAndTextGroupBox.Controls.Add(this.textBox2);
-            this.nameAndTextGroupBox.Controls.Add(this.textBox1);
-            this.nameAndTextGroupBox.Location = new System.Drawing.Point(31, 253);
-            this.nameAndTextGroupBox.Name = "nameAndTextGroupBox";
-            this.nameAndTextGroupBox.Size = new System.Drawing.Size(352, 107);
-            this.nameAndTextGroupBox.TabIndex = 2;
-            this.nameAndTextGroupBox.TabStop = false;
-            this.nameAndTextGroupBox.Text = "Define Name and Text";
+            this.sizeLabel.AutoSize = true;
+            this.sizeLabel.Location = new System.Drawing.Point(23, 63);
+            this.sizeLabel.Name = "sizeLabel";
+            this.sizeLabel.Size = new System.Drawing.Size(61, 13);
+            this.sizeLabel.TabIndex = 5;
+            this.sizeLabel.Text = "Size (W, H)";
             // 
-            // colorGroupBox
+            // locationLabel
             // 
-            this.colorGroupBox.Controls.Add(this.fcGroupBox);
-            this.colorGroupBox.Controls.Add(this.fgColorButton);
-            this.colorGroupBox.Controls.Add(this.bgColorGroupBox);
-            this.colorGroupBox.Controls.Add(this.bgColorButton);
-            this.colorGroupBox.Location = new System.Drawing.Point(31, 366);
-            this.colorGroupBox.Name = "colorGroupBox";
-            this.colorGroupBox.Size = new System.Drawing.Size(352, 107);
-            this.colorGroupBox.TabIndex = 3;
-            this.colorGroupBox.TabStop = false;
-            this.colorGroupBox.Text = "Choose Color";
-            // 
-            // controlGroupBox
-            // 
-            this.controlGroupBox.Controls.Add(this.exitButton);
-            this.controlGroupBox.Controls.Add(this.clearButton);
-            this.controlGroupBox.Controls.Add(this.createButton);
-            this.controlGroupBox.Location = new System.Drawing.Point(31, 496);
-            this.controlGroupBox.Name = "controlGroupBox";
-            this.controlGroupBox.Size = new System.Drawing.Size(436, 107);
-            this.controlGroupBox.TabIndex = 4;
-            this.controlGroupBox.TabStop = false;
-            this.controlGroupBox.Text = "Controls";
-            // 
-            // saveLoadGroupBox
-            // 
-            this.saveLoadGroupBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.saveLoadGroupBox.Controls.Add(this.removeButton);
-            this.saveLoadGroupBox.Controls.Add(this.loadButton);
-            this.saveLoadGroupBox.Controls.Add(this.saveButton);
-            this.saveLoadGroupBox.Controls.Add(this.controlSelectionComboBox);
-            this.saveLoadGroupBox.Location = new System.Drawing.Point(389, 85);
-            this.saveLoadGroupBox.Name = "saveLoadGroupBox";
-            this.saveLoadGroupBox.Size = new System.Drawing.Size(379, 100);
-            this.saveLoadGroupBox.TabIndex = 5;
-            this.saveLoadGroupBox.TabStop = false;
-            this.saveLoadGroupBox.Text = "Save, Load, or Remove";
-            // 
-            // controlSelectionComboBox
-            // 
-            this.controlSelectionComboBox.FormattingEnabled = true;
-            this.controlSelectionComboBox.Location = new System.Drawing.Point(119, 28);
-            this.controlSelectionComboBox.Name = "controlSelectionComboBox";
-            this.controlSelectionComboBox.Size = new System.Drawing.Size(121, 21);
-            this.controlSelectionComboBox.TabIndex = 0;
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(6, 71);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // loadButton
-            // 
-            this.loadButton.Location = new System.Drawing.Point(144, 71);
-            this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(75, 23);
-            this.loadButton.TabIndex = 2;
-            this.loadButton.Text = "Load";
-            this.loadButton.UseVisualStyleBackColor = true;
-            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
-            // 
-            // removeButton
-            // 
-            this.removeButton.Location = new System.Drawing.Point(298, 71);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(75, 23);
-            this.removeButton.TabIndex = 3;
-            this.removeButton.Text = "Remove";
-            this.removeButton.UseVisualStyleBackColor = true;
-            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
-            // 
-            // radioControlRadioButton
-            // 
-            this.radioControlRadioButton.AutoSize = true;
-            this.radioControlRadioButton.Location = new System.Drawing.Point(57, 30);
-            this.radioControlRadioButton.Name = "radioControlRadioButton";
-            this.radioControlRadioButton.Size = new System.Drawing.Size(87, 17);
-            this.radioControlRadioButton.TabIndex = 0;
-            this.radioControlRadioButton.TabStop = true;
-            this.radioControlRadioButton.Text = "Radio Button";
-            this.radioControlRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // checkControlRadioButton
-            // 
-            this.checkControlRadioButton.AutoSize = true;
-            this.checkControlRadioButton.Location = new System.Drawing.Point(57, 70);
-            this.checkControlRadioButton.Name = "checkControlRadioButton";
-            this.checkControlRadioButton.Size = new System.Drawing.Size(77, 17);
-            this.checkControlRadioButton.TabIndex = 1;
-            this.checkControlRadioButton.TabStop = true;
-            this.checkControlRadioButton.Text = "Check Box";
-            this.checkControlRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // textBoxControlRadioButton
-            // 
-            this.textBoxControlRadioButton.AutoSize = true;
-            this.textBoxControlRadioButton.Location = new System.Drawing.Point(206, 30);
-            this.textBoxControlRadioButton.Name = "textBoxControlRadioButton";
-            this.textBoxControlRadioButton.Size = new System.Drawing.Size(64, 17);
-            this.textBoxControlRadioButton.TabIndex = 2;
-            this.textBoxControlRadioButton.TabStop = true;
-            this.textBoxControlRadioButton.Text = "TextBox";
-            this.textBoxControlRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // buttonControlRadioButton
-            // 
-            this.buttonControlRadioButton.AutoSize = true;
-            this.buttonControlRadioButton.Location = new System.Drawing.Point(206, 70);
-            this.buttonControlRadioButton.Name = "buttonControlRadioButton";
-            this.buttonControlRadioButton.Size = new System.Drawing.Size(56, 17);
-            this.buttonControlRadioButton.TabIndex = 3;
-            this.buttonControlRadioButton.TabStop = true;
-            this.buttonControlRadioButton.Text = "Button";
-            this.buttonControlRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // xTextBox
-            // 
-            this.xTextBox.Location = new System.Drawing.Point(112, 24);
-            this.xTextBox.Name = "xTextBox";
-            this.xTextBox.Size = new System.Drawing.Size(31, 20);
-            this.xTextBox.TabIndex = 0;
-            // 
-            // yTextBox
-            // 
-            this.yTextBox.Location = new System.Drawing.Point(172, 25);
-            this.yTextBox.Name = "yTextBox";
-            this.yTextBox.Size = new System.Drawing.Size(31, 20);
-            this.yTextBox.TabIndex = 1;
+            this.locationLabel.AutoSize = true;
+            this.locationLabel.Location = new System.Drawing.Point(23, 31);
+            this.locationLabel.Name = "locationLabel";
+            this.locationLabel.Size = new System.Drawing.Size(77, 13);
+            this.locationLabel.TabIndex = 4;
+            this.locationLabel.Text = "Location (X, Y)";
             // 
             // hTextBox
             // 
@@ -257,46 +171,32 @@
             this.wTextBox.Size = new System.Drawing.Size(31, 20);
             this.wTextBox.TabIndex = 2;
             // 
-            // locationLabel
+            // yTextBox
             // 
-            this.locationLabel.AutoSize = true;
-            this.locationLabel.Location = new System.Drawing.Point(23, 31);
-            this.locationLabel.Name = "locationLabel";
-            this.locationLabel.Size = new System.Drawing.Size(77, 13);
-            this.locationLabel.TabIndex = 4;
-            this.locationLabel.Text = "Location (X, Y)";
+            this.yTextBox.Location = new System.Drawing.Point(172, 25);
+            this.yTextBox.Name = "yTextBox";
+            this.yTextBox.Size = new System.Drawing.Size(31, 20);
+            this.yTextBox.TabIndex = 1;
             // 
-            // sizeLabel
+            // xTextBox
             // 
-            this.sizeLabel.AutoSize = true;
-            this.sizeLabel.Location = new System.Drawing.Point(23, 63);
-            this.sizeLabel.Name = "sizeLabel";
-            this.sizeLabel.Size = new System.Drawing.Size(61, 13);
-            this.sizeLabel.TabIndex = 5;
-            this.sizeLabel.Text = "Size (W, H)";
+            this.xTextBox.Location = new System.Drawing.Point(112, 24);
+            this.xTextBox.Name = "xTextBox";
+            this.xTextBox.Size = new System.Drawing.Size(31, 20);
+            this.xTextBox.TabIndex = 0;
             // 
-            // textBox1
+            // nameAndTextGroupBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(153, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(153, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(57, 38);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(35, 13);
-            this.nameLabel.TabIndex = 2;
-            this.nameLabel.Text = "Name";
+            this.nameAndTextGroupBox.Controls.Add(this.textLabel);
+            this.nameAndTextGroupBox.Controls.Add(this.nameLabel);
+            this.nameAndTextGroupBox.Controls.Add(this.textTextBox);
+            this.nameAndTextGroupBox.Controls.Add(this.nameTextBox);
+            this.nameAndTextGroupBox.Location = new System.Drawing.Point(31, 253);
+            this.nameAndTextGroupBox.Name = "nameAndTextGroupBox";
+            this.nameAndTextGroupBox.Size = new System.Drawing.Size(352, 107);
+            this.nameAndTextGroupBox.TabIndex = 2;
+            this.nameAndTextGroupBox.TabStop = false;
+            this.nameAndTextGroupBox.Text = "Define Name and Text";
             // 
             // textLabel
             // 
@@ -307,23 +207,49 @@
             this.textLabel.TabIndex = 3;
             this.textLabel.Text = "Text";
             // 
-            // bgColorButton
+            // nameLabel
             // 
-            this.bgColorButton.Location = new System.Drawing.Point(26, 29);
-            this.bgColorButton.Name = "bgColorButton";
-            this.bgColorButton.Size = new System.Drawing.Size(108, 23);
-            this.bgColorButton.TabIndex = 0;
-            this.bgColorButton.Text = "Background Color";
-            this.bgColorButton.UseVisualStyleBackColor = true;
-            this.bgColorButton.Click += new System.EventHandler(this.bgColorButton_Click);
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(57, 38);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(35, 13);
+            this.nameLabel.TabIndex = 2;
+            this.nameLabel.Text = "Name";
             // 
-            // bgColorGroupBox
+            // textTextBox
             // 
-            this.bgColorGroupBox.Location = new System.Drawing.Point(153, 29);
-            this.bgColorGroupBox.Name = "bgColorGroupBox";
-            this.bgColorGroupBox.Size = new System.Drawing.Size(19, 23);
-            this.bgColorGroupBox.TabIndex = 1;
-            this.bgColorGroupBox.TabStop = false;
+            this.textTextBox.Location = new System.Drawing.Point(153, 71);
+            this.textTextBox.Name = "textTextBox";
+            this.textTextBox.Size = new System.Drawing.Size(100, 20);
+            this.textTextBox.TabIndex = 1;
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Location = new System.Drawing.Point(153, 35);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nameTextBox.TabIndex = 0;
+            // 
+            // colorGroupBox
+            // 
+            this.colorGroupBox.Controls.Add(this.fcGroupBox);
+            this.colorGroupBox.Controls.Add(this.fgColorButton);
+            this.colorGroupBox.Controls.Add(this.bgColorGroupBox);
+            this.colorGroupBox.Controls.Add(this.bgColorButton);
+            this.colorGroupBox.Location = new System.Drawing.Point(31, 366);
+            this.colorGroupBox.Name = "colorGroupBox";
+            this.colorGroupBox.Size = new System.Drawing.Size(352, 107);
+            this.colorGroupBox.TabIndex = 3;
+            this.colorGroupBox.TabStop = false;
+            this.colorGroupBox.Text = "Choose Color";
+            // 
+            // fcGroupBox
+            // 
+            this.fcGroupBox.Location = new System.Drawing.Point(153, 69);
+            this.fcGroupBox.Name = "fcGroupBox";
+            this.fcGroupBox.Size = new System.Drawing.Size(19, 23);
+            this.fcGroupBox.TabIndex = 2;
+            this.fcGroupBox.TabStop = false;
             // 
             // fgColorButton
             // 
@@ -335,23 +261,45 @@
             this.fgColorButton.UseVisualStyleBackColor = true;
             this.fgColorButton.Click += new System.EventHandler(this.fgColorButton_Click);
             // 
-            // fcGroupBox
+            // bgColorGroupBox
             // 
-            this.fcGroupBox.Location = new System.Drawing.Point(153, 69);
-            this.fcGroupBox.Name = "fcGroupBox";
-            this.fcGroupBox.Size = new System.Drawing.Size(19, 23);
-            this.fcGroupBox.TabIndex = 2;
-            this.fcGroupBox.TabStop = false;
+            this.bgColorGroupBox.Location = new System.Drawing.Point(153, 29);
+            this.bgColorGroupBox.Name = "bgColorGroupBox";
+            this.bgColorGroupBox.Size = new System.Drawing.Size(19, 23);
+            this.bgColorGroupBox.TabIndex = 1;
+            this.bgColorGroupBox.TabStop = false;
             // 
-            // createButton
+            // bgColorButton
             // 
-            this.createButton.Location = new System.Drawing.Point(26, 48);
-            this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(86, 23);
-            this.createButton.TabIndex = 0;
-            this.createButton.Text = "Create Object";
-            this.createButton.UseVisualStyleBackColor = true;
-            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            this.bgColorButton.Location = new System.Drawing.Point(26, 29);
+            this.bgColorButton.Name = "bgColorButton";
+            this.bgColorButton.Size = new System.Drawing.Size(108, 23);
+            this.bgColorButton.TabIndex = 0;
+            this.bgColorButton.Text = "Background Color";
+            this.bgColorButton.UseVisualStyleBackColor = true;
+            this.bgColorButton.Click += new System.EventHandler(this.bgColorButton_Click);
+            // 
+            // controlGroupBox
+            // 
+            this.controlGroupBox.Controls.Add(this.exitButton);
+            this.controlGroupBox.Controls.Add(this.clearButton);
+            this.controlGroupBox.Controls.Add(this.createButton);
+            this.controlGroupBox.Location = new System.Drawing.Point(31, 496);
+            this.controlGroupBox.Name = "controlGroupBox";
+            this.controlGroupBox.Size = new System.Drawing.Size(436, 107);
+            this.controlGroupBox.TabIndex = 4;
+            this.controlGroupBox.TabStop = false;
+            this.controlGroupBox.Text = "Controls";
+            // 
+            // exitButton
+            // 
+            this.exitButton.Location = new System.Drawing.Point(315, 48);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // clearButton
             // 
@@ -363,15 +311,67 @@
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
-            // exitButton
+            // createButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(315, 48);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
-            this.exitButton.TabIndex = 2;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.createButton.Location = new System.Drawing.Point(26, 48);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(86, 23);
+            this.createButton.TabIndex = 0;
+            this.createButton.Text = "Create Object";
+            this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            // 
+            // saveLoadGroupBox
+            // 
+            this.saveLoadGroupBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.saveLoadGroupBox.Controls.Add(this.removeButton);
+            this.saveLoadGroupBox.Controls.Add(this.loadButton);
+            this.saveLoadGroupBox.Controls.Add(this.saveButton);
+            this.saveLoadGroupBox.Controls.Add(this.controlSelectionComboBox);
+            this.saveLoadGroupBox.Location = new System.Drawing.Point(389, 85);
+            this.saveLoadGroupBox.Name = "saveLoadGroupBox";
+            this.saveLoadGroupBox.Size = new System.Drawing.Size(379, 100);
+            this.saveLoadGroupBox.TabIndex = 5;
+            this.saveLoadGroupBox.TabStop = false;
+            this.saveLoadGroupBox.Text = "Save, Load, or Remove";
+            // 
+            // removeButton
+            // 
+            this.removeButton.Location = new System.Drawing.Point(298, 71);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(75, 23);
+            this.removeButton.TabIndex = 3;
+            this.removeButton.Text = "Remove";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
+            // loadButton
+            // 
+            this.loadButton.Location = new System.Drawing.Point(144, 71);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(75, 23);
+            this.loadButton.TabIndex = 2;
+            this.loadButton.Text = "Load";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(6, 71);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 1;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // controlSelectionComboBox
+            // 
+            this.controlSelectionComboBox.FormattingEnabled = true;
+            this.controlSelectionComboBox.Location = new System.Drawing.Point(119, 28);
+            this.controlSelectionComboBox.Name = "controlSelectionComboBox";
+            this.controlSelectionComboBox.Size = new System.Drawing.Size(121, 21);
+            this.controlSelectionComboBox.TabIndex = 0;
             // 
             // FormBuilder
             // 
@@ -417,8 +417,8 @@
         private System.Windows.Forms.GroupBox nameAndTextGroupBox;
         private System.Windows.Forms.Label textLabel;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textTextBox;
+        private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.GroupBox colorGroupBox;
         private System.Windows.Forms.GroupBox fcGroupBox;
         private System.Windows.Forms.Button fgColorButton;
