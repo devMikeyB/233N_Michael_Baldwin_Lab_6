@@ -385,7 +385,7 @@
             this.Controls.Add(this.sizeAndLocationGroupBox);
             this.Controls.Add(this.objectSelectionGroupBox);
             this.Name = "FormBuilder";
-            this.Text = "Form1";
+            this.Text = "Form Builder";
             this.Load += new System.EventHandler(this.FormBuilder_Load);
             this.objectSelectionGroupBox.ResumeLayout(false);
             this.objectSelectionGroupBox.PerformLayout();
