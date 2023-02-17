@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,8 +26,29 @@ namespace _233N_Michael_Baldwin_Lab_6
             InitializeComponent();
         }
 
+
         private void FormBuilder_Load(object sender, EventArgs e)
         {
+
+
+            /*GroupBox testBox= new GroupBox();
+            testBox.Name = "Test"; 
+            testBox.Text = "Test";
+            testBox.Location = new Point(31, 27);
+            testBox.Size = new Size(352, 115);
+            testBox.Visible= true;
+            testBox.BackColor= Color.Red;
+            */
+            GroupBox testGroupBox = buildGroupBox("Test", "test", new Point(20, 10), new Size(20, 50));
+
+
+            this.Controls.Add(testGroupBox);
+            foreach (Control control in this.Controls)
+            {
+                Debug.WriteLine(control.ToString());
+                Debug.WriteLine(control.GetType());
+            }
+
             defaultFormBGColor = objectSelectionGroupBox.BackColor;
             defaultSaveBGColor = saveLoadGroupBox.BackColor;
 
@@ -60,10 +82,20 @@ namespace _233N_Michael_Baldwin_Lab_6
             groupBoxes[5] = nameAndTextGroupBox;
             groupBoxes[6] = saveLoadGroupBox;
             groupBoxes[7] = sizeAndLocationGroupBox;
-
+            resetRadios();
 
         }
 
+
+        private GroupBox buildGroupBox(string name, string text, Point point, Size size)
+        {
+            GroupBox groupBox = new GroupBox();
+            groupBox.Name = name;
+            groupBox.Text = text;
+            groupBox.Location = point;
+            groupBox.Size = size;
+            return groupBox;
+        }
         private void resetRadios()
         {
             foreach (RadioButton radioButton in radioButtons)
