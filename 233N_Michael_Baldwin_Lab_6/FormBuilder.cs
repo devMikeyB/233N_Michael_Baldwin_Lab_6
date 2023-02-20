@@ -9,7 +9,6 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace _233N_Michael_Baldwin_Lab_6
 {
@@ -31,8 +30,8 @@ namespace _233N_Michael_Baldwin_Lab_6
         Button[] allButtons;
 
 
-        Color defaultFormBGColor;
-        Color defaultSaveBGColor;
+        Color defaultFormBGColor = SystemColors.Control;
+        Color defaultSaveBGColor = SystemColors.InactiveCaption;
 
         public FormBuilder()
         {
@@ -44,25 +43,25 @@ namespace _233N_Michael_Baldwin_Lab_6
         {
             
             newControlParams = new FormParameter[31]; //Array containing parameters for each control to be added.
-            newControlParams[0] = new FormParameter("objectSelectionGroupBox", "Select Object", 31, 27, 352, 107, "GroupBox");
-            newControlParams[1] = new FormParameter("sizeAndLocationGroupBox", "Size and Location", 31, 140, 352, 107, "GroupBox");
-            newControlParams[2] = new FormParameter("nameAndTextGroupBox", "Set Name and Text", 31, 253, 352, 107, "GroupBox");
-            newControlParams[3] = new FormParameter("colorGroupBox", "Choose Color", 31, 366, 352, 107, "GroupBox");
-            newControlParams[4] = new FormParameter("controlGroupBox", "Controls", 31, 496, 436, 107, "GroupBox");
+            newControlParams[0] = new FormParameter("objectSelectionGroupBox", "Select Object", 31, 27, 352, 107, "GroupBox"); 
+            newControlParams[1] = new FormParameter("sizeAndLocationGroupBox", "Size and Location", 31, 140, 352, 107, "GroupBox"); 
+            newControlParams[2] = new FormParameter("nameAndTextGroupBox", "Set Name and Text", 31, 253, 352, 107, "GroupBox"); 
+            newControlParams[3] = new FormParameter("colorGroupBox", "Choose Color", 31, 366, 352, 107, "GroupBox");            
+            newControlParams[4] = new FormParameter("controlGroupBox", "Controls", 31, 496, 436, 107, "GroupBox");              
             newControlParams[5] = new FormParameter("saveLoadGroupBox", "Save, Load, or Remove", 389, 85, 379, 100, "GroupBox");
-            newControlParams[6] = new FormParameter("radioRadioButton", "Radio Button", 57, 30, 87, 17, "RadioButton");
-            newControlParams[7] = new FormParameter("textBoxRadioButton", "Text Box", 206, 30, 64, 17, "RadioButton");
-            newControlParams[8] = new FormParameter("checkBoxRadioButton", "Check Box", 57, 70, 77, 17, "RadioButton");
-            newControlParams[9] = new FormParameter("buttonRadioButton", "Button", 206, 70, 56, 17, "RadioButton");
-            newControlParams[10] = new FormParameter("locationLabel", "Location (X, Y)", 23, 31, 77, 13, "numLabel");
-            newControlParams[11] = new FormParameter("sizeLabel", "Size (W, H)", 23, 63, 61, 13, "numLabel");
-            newControlParams[12] = new FormParameter("xTextBox", "", 112, 24, 31, 20, "numTextBox");
-            newControlParams[13] = new FormParameter("yTextBox", "", 172, 25, 31, 20, "numTextBox");
-            newControlParams[14] = new FormParameter("wTextBox", "", 112, 59, 31, 20, "numTextBox");
-            newControlParams[15] = new FormParameter("hTextBox", "", 172, 60, 31, 20, "numTextBox");
-            newControlParams[16] = new FormParameter("nameLabel", "Name: ", 57, 38, 35, 13, "detLabel");
-            newControlParams[17] = new FormParameter("textLabel", "Text: ", 57, 74, 28, 13, "detLabel");
-            newControlParams[18] = new FormParameter("nameTextBox", "", 153, 35, 100, 20, "TextBox");
+            newControlParams[6] = new FormParameter("radioRadioButton", "Radio Button", 57, 30, 87, 17, "RadioButton");         
+            newControlParams[7] = new FormParameter("textBoxRadioButton", "Text Box", 206, 30, 64, 17, "RadioButton");          
+            newControlParams[8] = new FormParameter("checkBoxRadioButton", "Check Box", 57, 70, 77, 17, "RadioButton");         
+            newControlParams[9] = new FormParameter("buttonRadioButton", "Button", 206, 70, 56, 17, "RadioButton");             
+            newControlParams[10] = new FormParameter("locationLabel", "Location (X, Y)", 23, 31, 77, 13, "numLabel");           
+            newControlParams[11] = new FormParameter("sizeLabel", "Size (W, H)", 23, 63, 61, 13, "numLabel");                   
+            newControlParams[12] = new FormParameter("xTextBox", "", 112, 24, 31, 20, "numTextBox");                            
+            newControlParams[13] = new FormParameter("yTextBox", "", 172, 25, 31, 20, "numTextBox");                            
+            newControlParams[14] = new FormParameter("wTextBox", "", 112, 59, 31, 20, "numTextBox");                            
+            newControlParams[15] = new FormParameter("hTextBox", "", 172, 60, 31, 20, "numTextBox");                            
+            newControlParams[16] = new FormParameter("nameLabel", "Name: ", 57, 38, 35, 13, "detLabel");                        
+            newControlParams[17] = new FormParameter("textLabel", "Text: ", 57, 74, 28, 13, "detLabel");                        
+            newControlParams[18] = new FormParameter("nameTextBox", "", 153, 35, 100, 20, "TextBox");                           
             newControlParams[19] = new FormParameter("textTextBox", "", 153, 71, 100, 20, "TextBox");
             newControlParams[20] = new FormParameter("bgColorGroupBox", "", 153, 29, 19, 23, "colGroupBox");
             newControlParams[21] = new FormParameter("fgColorGroupBox", "", 153, 69, 19, 23, "colGroupBox");
@@ -114,6 +113,8 @@ namespace _233N_Michael_Baldwin_Lab_6
                 {
                     case "GroupBox": //If it's a GroupBox
                         GroupBox newBox = buildGroupBox(param.Name, param.Text, param.Location, param.Size); //Create GroupBox
+                        if (newBox.Name == "saveLoadGroupBox")
+                            newBox.BackColor = defaultSaveBGColor;
                         int iterable = 0; //Reset iterable
                         foreach (GroupBox box in groupBoxes)
                         {   //Check for next null value in groupBox array
@@ -182,20 +183,23 @@ namespace _233N_Michael_Baldwin_Lab_6
         }
 
         private void buttonHandler(object sender, EventArgs e)
-        {
+        { //This button handler function is used so that buttons may be dynamically constructed and function can be added afterward.
             switch (sender.ToString())
             {
                 case "System.Windows.Forms.Button, Text: Back Color":
-                    Debug.WriteLine("Color");
-                    bgColorButton_Click(sender, e);
+                    bgColorButton_Click(sender, e); //Sets backColor
                     break;
 
                 case "System.Windows.Forms.Button, Text: Fore Color":
+                    fgColorButton_Click(sender, e); //Sets Forecolor
                     break;
+
                 case "System.Windows.Forms.Button, Text: Create":
-                    Debug.WriteLine("Create");
+                    createButton_Click(sender, e); //Create Form
                     break;
+
                 case "System.Windows.Forms.Button, Text: Clear":
+                    clearButton_Click(sender, e); //Clears Form
                     break;
                 case "System.Windows.Forms.Button, Text: Exit":
                     break;
@@ -287,6 +291,15 @@ namespace _233N_Michael_Baldwin_Lab_6
             comBox.Size = size;
             return comBox;
         }
+        private CheckBox buildCheckBox(string name, string text, Point point, Size size)
+        {/// Takes pertinent information and returns a Checkbox object.
+            CheckBox checkBox = new CheckBox();
+            checkBox.Name = name;
+            checkBox.Text = text;
+            checkBox.Location = point;
+            checkBox.Size = size;
+            return checkBox;
+        }
 
         private void resetRadios()
         {
@@ -302,27 +315,36 @@ namespace _233N_Michael_Baldwin_Lab_6
             {   //Reset textBoxes
                 textBox.Text = string.Empty;
             }
+            foreach (TextBox textBox in numTextBoxes)
+            {
+                textBox.Text = string.Empty;
+            }
         }
 
         private void resetGroupBoxes()
         {
             foreach (GroupBox groupBox in groupBoxes)
             {
-                if (groupBox.Name == "saveLoadGroupBox")
+                if (groupBox != null)
                 {
-                    groupBox.BackColor = defaultSaveBGColor;
-                }
-                else
-                {
-                    groupBox.BackColor = defaultFormBGColor;
+                    if (groupBox.Name == "saveLoadGroupBox")
+                    {
+                        groupBox.BackColor = defaultSaveBGColor;
+                    }
+                    else
+                    {
+                        groupBox.BackColor = defaultFormBGColor;
+                    }
                 }
             }
+            foreach (GroupBox groupBox in colgroupBoxes)
+                groupBox.BackColor = defaultFormBGColor;
         }
 
         private bool isFormFilledOut()
         {
-            bool[] formReqs = new bool[4];
-            formReqs[0] = false; formReqs[1] = true; formReqs[2] = true; formReqs[3] = true;
+            bool[] formReqs = new bool[5];
+            formReqs[0] = false; formReqs[1] = true; formReqs[2] = true; formReqs[3] = true; formReqs[4] = true;
 
 
 
@@ -353,13 +375,7 @@ namespace _233N_Michael_Baldwin_Lab_6
                     return false;
                 }
             }
-            /*
-            if (nameTextBox.Text.Contains(" "))
-            {   //Check if there is a space in the name value.
-                MessageBox.Show("Name value may not contain a space.");
-                formReqs[3] = false;
-                return false;
-            }*/
+            
 
             foreach (bool req in formReqs)
             {
@@ -374,32 +390,45 @@ namespace _233N_Michael_Baldwin_Lab_6
 
         }
 
-        private void buildControlProps()
-        {
+        private FormParameter collectFormInfo()
+        {   FormParameter returnParam = new FormParameter(getControlByName(textBoxes, "nameTextBox").Text,
+                                                          getControlByName(textBoxes, "textTextBox").Text,
+                                                          Int32.Parse(getControlByName(numTextBoxes, "xTextBox").Text),
+                                                          Int32.Parse(getControlByName(numTextBoxes, "yTextBox").Text),
+                                                          Int32.Parse(getControlByName(numTextBoxes, "hTextBox").Text),
+                                                          Int32.Parse(getControlByName(numTextBoxes, "wTextBox").Text)
+                                                          );
+            return returnParam;
+        }
+
+        private FormParameter buildControlProps()
+        {   
             foreach (RadioButton radioButton in radioButtons)
             {
                 if (radioButton.Checked)
                 {
+                    FormParameter formParameter = collectFormInfo();
                     switch (radioButton.Name)
                     {
                         case "radioControlRadioButton":
-                            Form radioForm = new Form();
-                            radioForm.Name = "radioForm";
-                            radioForm.Text = "Custom Control";
-                            MessageBox.Show("Radio");
-                            break;
+                            formParameter.controlType = "RadioButton";
+                            return formParameter;
+
                         case "textBoxControlRadioButton":
-                            MessageBox.Show("text");
-                            break;
+                            formParameter.controlType = "TextBox";
+                            return formParameter;
+
                         case "checkControlRadioButton":
-                            MessageBox.Show("check");
-                            break;
+                            formParameter.controlType = "CheckBox";
+                            return formParameter;
+
                         case "buttonControlRadioButton":
-                            MessageBox.Show("button");
-                            break;
+                            formParameter.controlType = "Button";
+                            return formParameter;
                     }
                 }
             }
+            return new FormParameter();
         }
 
         private FormParameter returnFormInfo()
@@ -466,7 +495,7 @@ namespace _233N_Michael_Baldwin_Lab_6
         {
             resetRadios();
             resetTextBoxes();
-
+            resetGroupBoxes();
         }
 
         private void createButton_Click(object sender, EventArgs e)
@@ -474,30 +503,45 @@ namespace _233N_Michael_Baldwin_Lab_6
             if (isFormFilledOut())
             {
                 MessageBox.Show("Form complete.");
+                FormParameter formToBe = buildControlProps();
+
+                switch (formToBe.controlType)
+                {
+                    case "RadioButton":
+                        RadioButton radiobutton = buildRadioButton(formToBe.Name, formToBe.Text, formToBe.Location, formToBe.Size);
+                        break;
+                    case "TextBox":
+                        TextBox textBox = buildTextBox(formToBe.Name, formToBe.Text, formToBe.Location, formToBe.Size);
+                        break;
+                    case "Button":
+                        Button button = buildButton(formToBe.Name, formToBe.Text, formToBe.Location, formToBe.Size);
+                        break;
+                    case "CheckBox":
+                        CheckBox checkbox = buildCheckBox(formToBe.Name, formToBe.Text, formToBe.Location, formToBe.Size);
+                        break;
+                }
+
             }
-            buildControlProps();
+
         }
 
         private void fgColorButton_Click(object sender, EventArgs e)
         {
             ColorDialog colorPicker = new ColorDialog();
             colorPicker.AllowFullOpen = false; colorPicker.ShowHelp = true;
-            //colorPicker.Color = fcGroupBox.BackColor;
-
             if (colorPicker.ShowDialog() == DialogResult.OK)
             {
-                //fcGroupBox.BackColor = colorPicker.Color;
+                getControlByName(colgroupBoxes, "fgColorGroupBox").BackColor = colorPicker.Color;
             }
         }
 
         private void bgColorButton_Click(object sender, EventArgs e)
         {
-            ColorDialog colorPicker = new ColorDialog();
-            colorPicker.AllowFullOpen = false; colorPicker.ShowHelp = true;
-            if (colorPicker.ShowDialog() == DialogResult.OK)
-            {
+            ColorDialog colorPicker = new ColorDialog(); //Select color
+            colorPicker.AllowFullOpen = false; colorPicker.ShowHelp = true; 
+            if (colorPicker.ShowDialog() == DialogResult.OK) //If ok
+            {   //Assign color to bgColorGroupBox for simple storage and user simplicity.
                 getControlByName(colgroupBoxes, "bgColorGroupBox").BackColor = colorPicker.Color;
-                //  bgColorGroupBox.BackColor = colorPicker.Color;
             }
         }
 

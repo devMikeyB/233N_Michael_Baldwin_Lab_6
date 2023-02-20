@@ -18,6 +18,9 @@ namespace _233N_Michael_Baldwin_Lab_6
             this.sizeH= -1;
             this.sizeW= -1;
             this.controlType= string.Empty;
+            this.BackgroundColor = SystemColors.Control;
+            this.ForegroundColor = SystemColors.Control;
+
         }
 
         public FormParameter(string name, string text, int pox, int poy, int sizeh, int sizew, string controlType = "")
@@ -31,6 +34,8 @@ namespace _233N_Michael_Baldwin_Lab_6
             this.sizeW = sizew;
             this.Size = new Size(sizeH, sizeW);
             this.controlType = controlType;
+            this.BackgroundColor= SystemColors.Control;
+            this.ForegroundColor= SystemColors.Control;
         }
 
         public string Name { get; set; }
@@ -42,6 +47,9 @@ namespace _233N_Michael_Baldwin_Lab_6
         public int sizeW { get; set; }
         public Size Size { get; set; }
         public string controlType { get; set; }
+        public Color BackgroundColor { get; set; }
+        public Color ForegroundColor { get; set; }
+
 
         public override string ToString()
         {
