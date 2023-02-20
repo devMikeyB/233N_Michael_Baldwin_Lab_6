@@ -5,9 +5,11 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace _233N_Michael_Baldwin_Lab_6
 {
@@ -17,6 +19,17 @@ namespace _233N_Michael_Baldwin_Lab_6
         TextBox[] textBoxes;
         TextBox[] numTextBoxes;
         GroupBox[] groupBoxes;
+        GroupBox[] colgroupBoxes;
+        FormParameter[] newControlParams;
+        Label[] detLabels;
+        Label[] numLabels;
+        Button[] colButtons;
+        Button[] controlButtons;
+        Button[] slButtons;
+        ComboBox[] slComboBoxes;
+
+        Button[] allButtons;
+
 
         Color defaultFormBGColor;
         Color defaultSaveBGColor;
@@ -29,66 +42,197 @@ namespace _233N_Michael_Baldwin_Lab_6
 
         private void FormBuilder_Load(object sender, EventArgs e)
         {
+            
+            newControlParams = new FormParameter[31]; //Array containing parameters for each control to be added.
+            newControlParams[0] = new FormParameter("objectSelectionGroupBox", "Select Object", 31, 27, 352, 107, "GroupBox");
+            newControlParams[1] = new FormParameter("sizeAndLocationGroupBox", "Size and Location", 31, 140, 352, 107, "GroupBox");
+            newControlParams[2] = new FormParameter("nameAndTextGroupBox", "Set Name and Text", 31, 253, 352, 107, "GroupBox");
+            newControlParams[3] = new FormParameter("colorGroupBox", "Choose Color", 31, 366, 352, 107, "GroupBox");
+            newControlParams[4] = new FormParameter("controlGroupBox", "Controls", 31, 496, 436, 107, "GroupBox");
+            newControlParams[5] = new FormParameter("saveLoadGroupBox", "Save, Load, or Remove", 389, 85, 379, 100, "GroupBox");
+            newControlParams[6] = new FormParameter("radioRadioButton", "Radio Button", 57, 30, 87, 17, "RadioButton");
+            newControlParams[7] = new FormParameter("textBoxRadioButton", "Text Box", 206, 30, 64, 17, "RadioButton");
+            newControlParams[8] = new FormParameter("checkBoxRadioButton", "Check Box", 57, 70, 77, 17, "RadioButton");
+            newControlParams[9] = new FormParameter("buttonRadioButton", "Button", 206, 70, 56, 17, "RadioButton");
+            newControlParams[10] = new FormParameter("locationLabel", "Location (X, Y)", 23, 31, 77, 13, "numLabel");
+            newControlParams[11] = new FormParameter("sizeLabel", "Size (W, H)", 23, 63, 61, 13, "numLabel");
+            newControlParams[12] = new FormParameter("xTextBox", "", 112, 24, 31, 20, "numTextBox");
+            newControlParams[13] = new FormParameter("yTextBox", "", 172, 25, 31, 20, "numTextBox");
+            newControlParams[14] = new FormParameter("wTextBox", "", 112, 59, 31, 20, "numTextBox");
+            newControlParams[15] = new FormParameter("hTextBox", "", 172, 60, 31, 20, "numTextBox");
+            newControlParams[16] = new FormParameter("nameLabel", "Name: ", 57, 38, 35, 13, "detLabel");
+            newControlParams[17] = new FormParameter("textLabel", "Text: ", 57, 74, 28, 13, "detLabel");
+            newControlParams[18] = new FormParameter("nameTextBox", "", 153, 35, 100, 20, "TextBox");
+            newControlParams[19] = new FormParameter("textTextBox", "", 153, 71, 100, 20, "TextBox");
+            newControlParams[20] = new FormParameter("bgColorGroupBox", "", 153, 29, 19, 23, "colGroupBox");
+            newControlParams[21] = new FormParameter("fgColorGroupBox", "", 153, 69, 19, 23, "colGroupBox");
+            newControlParams[22] = new FormParameter("bgColorButton", "Back Color", 26, 29, 108, 23, "colButton");
+            newControlParams[23] = new FormParameter("fgColorButton", "Fore Color", 26, 69, 108, 23, "colButton");
+            newControlParams[24] = new FormParameter("createButton", "Create", 26, 48, 86, 23, "controlButton");
+            newControlParams[25] = new FormParameter("clearButton", "Clear", 172, 48, 75, 23, "controlButton");
+            newControlParams[26] = new FormParameter("exitButton", "Exit", 315, 48, 75, 23, "controlButton");
+            newControlParams[27] = new FormParameter("saveButton", "Save", 6, 71, 75, 23, "slButton");
+            newControlParams[28] = new FormParameter("loadButton", "Load", 144, 71, 75, 23, "slButton");
+            newControlParams[29] = new FormParameter("removeButton", "Remove", 298, 71, 75, 23, "slButton");
+            newControlParams[30] = new FormParameter("controlSelectionComboBox", "", 119, 28, 121, 21, "slComboBox");
 
-
-            /*GroupBox testBox= new GroupBox();
-            testBox.Name = "Test"; 
-            testBox.Text = "Test";
-            testBox.Location = new Point(31, 27);
-            testBox.Size = new Size(352, 115);
-            testBox.Visible= true;
-            testBox.BackColor= Color.Red;
-            */
-            GroupBox testGroupBox = buildGroupBox("Test", "test", new Point(20, 10), new Size(20, 50));
-
-
-            this.Controls.Add(testGroupBox);
-            foreach (Control control in this.Controls)
-            {
-                Debug.WriteLine(control.ToString());
-                Debug.WriteLine(control.GetType());
-            }
-
-            defaultFormBGColor = objectSelectionGroupBox.BackColor;
-            defaultSaveBGColor = saveLoadGroupBox.BackColor;
-
-
-            radioButtons = new RadioButton[4]; //Array of Radio Buttons within form.
-            radioButtons[0] = radioControlRadioButton;
-            radioButtons[1] = buttonControlRadioButton;
-            radioButtons[2] = checkControlRadioButton;
-            radioButtons[3] = textBoxControlRadioButton;
-
-            textBoxes = new TextBox[6]; //Array of textboxes within main form.
-            textBoxes[0] = xTextBox;
-            textBoxes[1] = yTextBox;
-            textBoxes[2] = wTextBox;
-            textBoxes[3] = hTextBox;
-            textBoxes[4] = nameTextBox;
-            textBoxes[5] = textTextBox;
-
-            numTextBoxes = new TextBox[4]; //Array of textboxes that should contain number values.
-            numTextBoxes[0] = xTextBox;
-            numTextBoxes[1] = yTextBox;
-            numTextBoxes[2] = wTextBox;
-            numTextBoxes[3] = hTextBox;
 
             groupBoxes = new GroupBox[8]; //Array of groupboxes.
-            groupBoxes[0] = objectSelectionGroupBox;
-            groupBoxes[1] = bgColorGroupBox;
-            groupBoxes[2] = colorGroupBox;
-            groupBoxes[3] = controlGroupBox;
-            groupBoxes[4] = fcGroupBox;
-            groupBoxes[5] = nameAndTextGroupBox;
-            groupBoxes[6] = saveLoadGroupBox;
-            groupBoxes[7] = sizeAndLocationGroupBox;
-            resetRadios();
+            colgroupBoxes = new GroupBox[2];
+            radioButtons = new RadioButton[4]; //Array of radioButtons
+            textBoxes = new TextBox[2]; //Array of textboxes for name and text values
+            numTextBoxes = new TextBox[4]; //Array of textboxes expected to contain ints
+            numLabels = new Label[2]; //Array of labels for number related fields
+            detLabels = new Label[2]; //Array of labels for string related fields
+            colButtons = new Button[2]; //Array of buttons for Color group box
+            controlButtons = new Button[3]; //Array of buttons for Control group box
+            slButtons = new Button[3]; //Array of buttons for Save and Load group box
+            slComboBoxes = new ComboBox[1]; //Array containing ComboBox for Save and Load functionality
+
+            handleControls();
 
         }
 
+        private Control getControlByName(Array enumerable, string name)
+        {
+            Control blankControl = new Control();
+            foreach (Control control in enumerable)
+            {
+                if (control.Name == name)
+                {
+                    return control;
+                }
+            }
+            return blankControl;
+        }
+
+        private void handleControls()
+        {
+            foreach (FormParameter param in newControlParams)
+            {
+                switch (param.controlType)
+                {
+                    case "GroupBox": //If it's a GroupBox
+                        GroupBox newBox = buildGroupBox(param.Name, param.Text, param.Location, param.Size); //Create GroupBox
+                        int iterable = 0; //Reset iterable
+                        foreach (GroupBox box in groupBoxes)
+                        {   //Check for next null value in groupBox array
+                            if (box == null)
+                            {   //If null
+                                groupBoxes[Array.IndexOf(groupBoxes, box)] = newBox; //Get index of current box and overwrite with new box
+                                this.Controls.Add(groupBoxes[iterable]); //Add groupBox array item to Controls
+                                break;
+                            }
+                            iterable++;
+                        }
+                        break;
+
+                    case "colGroupBox": //If it's a GroupBox
+                        GroupBox newColBox = buildGroupBox(param.Name, param.Text, param.Location, param.Size); //Create GroupBox
+                        applyControls(colgroupBoxes, newColBox, "colorGroupBox");
+                        break;
+
+                    case "RadioButton": //If RadioButton
+                        RadioButton newRadioButton = buildRadioButton(param.Name, param.Text, param.Location, param.Size); //Create RadioButton
+                        applyControls(radioButtons, newRadioButton, "objectSelectionGroupBox"); //Add to form
+                        break;
+
+                    case "TextBox":
+                        TextBox newTextBox = buildTextBox(param.Name, param.Text, param.Location, param.Size); //Create TextBox
+                        applyControls(textBoxes, newTextBox, "nameAndTextGroupBox"); //Add to form
+                        break;
+
+                    case "numTextBox":
+                        TextBox newnumTextBox = buildTextBox(param.Name, param.Text, param.Location, param.Size); //Create numTextBox
+                        applyControls(numTextBoxes, newnumTextBox, "sizeAndLocationGroupBox"); //Add to form
+                        break;
+
+                    case "numLabel":
+                        Label newnumLabel = buildLabel(param.Name, param.Text, param.Location, param.Size); //Create label
+                        applyControls(numLabels, newnumLabel, "sizeAndLocationGroupBox"); //Add to form
+                        break;
+
+                    case "detLabel":
+                        Label newdetLabel = buildLabel(param.Name, param.Text, param.Location, param.Size); //Create Label
+                        applyControls(detLabels, newdetLabel, "nameAndTextGroupBox"); //Add to form
+                        break;
+
+                    case "colButton":
+                        Button newButton = buildButton(param.Name, param.Text, param.Location, param.Size); //Create button
+                        applyControls(colButtons, newButton, "colorGroupBox"); //Add to form
+                        break;
+
+                    case "controlButton":
+                        Button newControlButton = buildButton(param.Name, param.Text, param.Location, param.Size);
+                        applyControls(controlButtons, newControlButton, "controlGroupBox");
+                        break;
+
+                    case "slButton":
+                        Button newslButton = buildButton(param.Name, param.Text, param.Location, param.Size);
+                        applyControls(slButtons, newslButton, "saveLoadGroupBox");
+                        break;
+
+                    case "slComboBox":
+                        ComboBox newslComboBox = buildComboBox(param.Name, param.Text, param.Location, param.Size);
+                        applyControls(slComboBoxes, newslComboBox, "saveLoadGroupBox");
+                        break;
+                }
+
+            }
+        }
+
+        private void buttonHandler(object sender, EventArgs e)
+        {
+            switch (sender.ToString())
+            {
+                case "System.Windows.Forms.Button, Text: Back Color":
+                    Debug.WriteLine("Color");
+                    bgColorButton_Click(sender, e);
+                    break;
+
+                case "System.Windows.Forms.Button, Text: Fore Color":
+                    break;
+                case "System.Windows.Forms.Button, Text: Create":
+                    Debug.WriteLine("Create");
+                    break;
+                case "System.Windows.Forms.Button, Text: Clear":
+                    break;
+                case "System.Windows.Forms.Button, Text: Exit":
+                    break;
+                case "System.Windows.Forms.Button, Text: Save":
+                    break;
+                case "System.Windows.Forms.Button, Text: Load":
+                    break;
+                case "System.Windows.Forms.Button, Text: Remove":
+                    break;
+            }
+
+
+        }
+
+        private void applyControls(Control[] controlArray, Control controlToAdd, string groupBoxName)
+        {
+            int iterable = 0;
+            foreach (Control control in controlArray)
+            {   //Check for next null value in groupBox array
+                if (control == null)
+                {   //If null
+                    controlArray[Array.IndexOf(controlArray, control)] = controlToAdd; //Get index of current box and overwrite with new box
+                    this.Controls.Add(controlArray[iterable]); //Add groupBox array item to Controls
+                    controlArray[iterable].Parent = getControlByName(groupBoxes, groupBoxName);
+                    break;
+                }
+                iterable++;
+            }
+        }
+
+        private void buildFormGroupBoxes()
+        {
+ 
+        }
 
         private GroupBox buildGroupBox(string name, string text, Point point, Size size)
-        {
+        {   /// Takes pertinent information and returns a GroupBox object.
             GroupBox groupBox = new GroupBox();
             groupBox.Name = name;
             groupBox.Text = text;
@@ -96,6 +240,54 @@ namespace _233N_Michael_Baldwin_Lab_6
             groupBox.Size = size;
             return groupBox;
         }
+
+        private RadioButton buildRadioButton(string name, string text, Point point, Size size)
+        {/// Takes pertinent information and returns a RadioButton object.
+            RadioButton radioButton = new RadioButton();
+            radioButton.Name = name;
+            radioButton.Text = text;
+            radioButton.Location = point;
+            radioButton.Size = size;
+            return radioButton;
+        }
+        private TextBox buildTextBox(string name, string text, Point point, Size size)
+        {/// Takes pertinent information and returns a TextBox object.
+            TextBox textBox = new TextBox();
+            textBox.Name = name;
+            textBox.Text = text;
+            textBox.Location = point;
+            textBox.Size = size;
+            return textBox;
+        }
+        private Label buildLabel(string name, string text, Point point, Size size)
+        {/// Takes pertinent information and returns a Label object.
+            Label label = new Label();
+            label.Name = name;
+            label.Text = text;
+            label.Location = point;
+            label.Size = size;
+            return label;
+        }
+        private Button buildButton(string name, string text, Point point, Size size)
+        {/// Takes pertinent information and returns a Label object.
+            Button button = new Button();
+            button.Name = name;
+            button.Text = text;
+            button.Location = point;
+            button.Size = size;
+            button.Click += buttonHandler;
+            return button;
+        }
+        private ComboBox buildComboBox(string name, string text, Point point, Size size)
+        {/// Takes pertinent information and returns a Label object.
+            ComboBox comBox = new ComboBox();
+            comBox.Name = name;
+            comBox.Text = text;
+            comBox.Location = point;
+            comBox.Size = size;
+            return comBox;
+        }
+
         private void resetRadios()
         {
             foreach (RadioButton radioButton in radioButtons)
@@ -161,13 +353,13 @@ namespace _233N_Michael_Baldwin_Lab_6
                     return false;
                 }
             }
-
+            /*
             if (nameTextBox.Text.Contains(" "))
             {   //Check if there is a space in the name value.
                 MessageBox.Show("Name value may not contain a space.");
                 formReqs[3] = false;
                 return false;
-            }
+            }*/
 
             foreach (bool req in formReqs)
             {
@@ -211,7 +403,7 @@ namespace _233N_Michael_Baldwin_Lab_6
         }
 
         private FormParameter returnFormInfo()
-        {
+        {/*
             int locationX = Int32.Parse(xTextBox.Text);
             int locationY = Int32.Parse(yTextBox.Text);
             int sizeW = Int32.Parse(wTextBox.Text);
@@ -219,7 +411,7 @@ namespace _233N_Michael_Baldwin_Lab_6
             string controlName = nameTextBox.Text;
             string controlText = textTextBox.Text;
             string controlfType = String.Empty;
-
+            
             foreach (RadioButton radioButton in radioButtons)
             {
                 if (radioButton.Checked)
@@ -237,6 +429,9 @@ namespace _233N_Michael_Baldwin_Lab_6
                                                         sizeW,
                                                         controlfType);
             return formDets;
+        */
+            FormParameter placeHolder = new FormParameter();
+            return placeHolder;
         }
 
 
@@ -287,11 +482,11 @@ namespace _233N_Michael_Baldwin_Lab_6
         {
             ColorDialog colorPicker = new ColorDialog();
             colorPicker.AllowFullOpen = false; colorPicker.ShowHelp = true;
-            colorPicker.Color = fcGroupBox.BackColor;
+            //colorPicker.Color = fcGroupBox.BackColor;
 
             if (colorPicker.ShowDialog() == DialogResult.OK)
             {
-                fcGroupBox.BackColor = colorPicker.Color;
+                //fcGroupBox.BackColor = colorPicker.Color;
             }
         }
 
@@ -299,11 +494,10 @@ namespace _233N_Michael_Baldwin_Lab_6
         {
             ColorDialog colorPicker = new ColorDialog();
             colorPicker.AllowFullOpen = false; colorPicker.ShowHelp = true;
-            colorPicker.Color = bgColorGroupBox.BackColor;
-
             if (colorPicker.ShowDialog() == DialogResult.OK)
             {
-                bgColorGroupBox.BackColor = colorPicker.Color;
+                getControlByName(colgroupBoxes, "bgColorGroupBox").BackColor = colorPicker.Color;
+                //  bgColorGroupBox.BackColor = colorPicker.Color;
             }
         }
 
