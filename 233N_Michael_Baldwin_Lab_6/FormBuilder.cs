@@ -410,19 +410,19 @@ namespace _233N_Michael_Baldwin_Lab_6
                     FormParameter formParameter = collectFormInfo();
                     switch (radioButton.Name)
                     {
-                        case "radioControlRadioButton":
+                        case "radioRadioButton":
                             formParameter.controlType = "RadioButton";
                             return formParameter;
 
-                        case "textBoxControlRadioButton":
+                        case "textBoxRadioButton":
                             formParameter.controlType = "TextBox";
                             return formParameter;
 
-                        case "checkControlRadioButton":
+                        case "checkBoxRadioButton":
                             formParameter.controlType = "CheckBox";
                             return formParameter;
 
-                        case "buttonControlRadioButton":
+                        case "buttonRadioButton":
                             formParameter.controlType = "Button";
                             return formParameter;
                     }
@@ -502,13 +502,18 @@ namespace _233N_Michael_Baldwin_Lab_6
         {
             if (isFormFilledOut())
             {
-                MessageBox.Show("Form complete.");
+                //MessageBox.Show("Form complete.");
                 FormParameter formToBe = buildControlProps();
-
+                Debug.WriteLine(formToBe.controlType);
                 switch (formToBe.controlType)
                 {
                     case "RadioButton":
                         RadioButton radiobutton = buildRadioButton(formToBe.Name, formToBe.Text, formToBe.Location, formToBe.Size);
+                        displayForm showedForm = new displayForm(radiobutton);
+                        //showedForm.ShowDialog(this);
+                        //showedForm.Show();
+                        //this.Hide();
+                        Debug.WriteLine(showedForm.ToString());
                         break;
                     case "TextBox":
                         TextBox textBox = buildTextBox(formToBe.Name, formToBe.Text, formToBe.Location, formToBe.Size);
