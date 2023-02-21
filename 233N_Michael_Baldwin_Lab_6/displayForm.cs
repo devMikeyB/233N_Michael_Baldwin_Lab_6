@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace _233N_Michael_Baldwin_Lab_6
 {
@@ -11,13 +12,26 @@ namespace _233N_Michael_Baldwin_Lab_6
     {
         public displayForm(Control controlToDisplay)
         {
-            GroupBox oneGroup = new GroupBox();
-            oneGroup.Width = this.Width;
-            oneGroup.Height = this.Height;
             this.Controls.Add(controlToDisplay);
-            controlToDisplay.Parent = oneGroup;
             this.Show();
         }
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // displayForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "displayForm";
+            this.Load += new System.EventHandler(this.displayForm_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void displayForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
